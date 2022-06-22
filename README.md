@@ -7,7 +7,7 @@ Projeto para a disciplina Front-End II no curso Certified Tech Developer (Digita
 
 <b>Normalizações e validações esperadas:</b>
 
-<i><b>→ Pagina de Login:</b></i>
+<i><b>→ Página de Login:</b></i>
 <ul>
 <li>Todos os campos devem ser normalizados (ex: retirar espaços desnecessários);</li>
 <li>Nenhum dos campos pode ser vazio/nulo;</li>
@@ -15,7 +15,7 @@ Projeto para a disciplina Front-End II no curso Certified Tech Developer (Digita
 <li>O botão de acesso deve ser habilitado apenas quando todos os campos do formulário estiverem validados corretamente.</li>
 </ul>
 
-<i><b>→ Pagina de Registro:</b></i>
+<i><b>→ Página de Registro:</b></i>
 <p>Além de aplicar todos os tópicos também solicitados na página de login, também é solicitado: </p>
 <ul>
 <li>Os campos “senha” e “repetir senha” devem possuir a mesma informação para serem considerados válidos;
