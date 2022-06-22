@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do App</title>
+
+<!-- CSS -->
+  <link rel="stylesheet" href="styles/acesso.css">
+</head>
+
+<body>
+
+  <div class="left">
+    <img src="./assets/pessoa-signup.png" alt="">
+  </div>
+  <div class="right">
+    <form>
+      <div class="form-header">
+        <p>To-Do App</p>
+      </div>
+
+      <label>
+        Nome:
+        <input type="text" id="nameReg">
+      </label>
+      <small id="errorNameReg"></small>
+
+      <label>
+        Sobrenome:
+        <input type="text" id="surnameReg">
+      </label>
+      <small id="errorSurnameReg"></small>
+
+      <label>
+        Email:
+        <input type="email" id="emailReg">
+      </label>
+      <small id="errorEmailReg"></small>
+
+      <label>
+        Senha:
+        <input type="password" id="passwordReg">
+      </label>
+      <small id="errorPasswordReg"></small>
+
+      <label>
+        Repetir senha:
+        <input type="password" id="confirmPasswordReg">
+      </label>
+      <small id="errorConfirmPasswordReg"></small>
+
+      <button id="buttonReg" disabled >Criar conta</button>
+    </form>
+
+    <div class="ingressar">
+      <a href="index.html">Já possui conta? Acesse aqui</a>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script src="/scripts/utilidades.js"></script>
+  <script src="/scripts/registro/indexRegistro.js" type="module"></script>
+
+</body>
+
+</html>
