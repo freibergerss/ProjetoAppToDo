@@ -47,7 +47,7 @@ emailLogin.addEventListener('keyup', () => {
 //EVENTO PARA O INPUT PASSWORD QUE VALIDA A SENHA INSERIDA (SEM REGRAS)
 passwordLogin.addEventListener('keyup', () => {
 
-    let errorMessagePasswordLogin = required(passwordLogin.value);
+    let errorMessagePasswordLogin = setPassword(passwordLogin.value);
     errorPasswordLogin.innerText = errorMessagePasswordLogin;
 
     passwordLogin.style.border = errorMessagePasswordLogin == '' ? '2px solid transparent' : '2px solid #e9554ebb';
