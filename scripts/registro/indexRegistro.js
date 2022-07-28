@@ -32,11 +32,11 @@ buttonReg.addEventListener('click', function (e) {
         //ESSE PREVENT_DEFAULT ME IMPEDE DE DAR REFRESH NA PÁGINA !!!!!!!!!!!!!!!!!
 
 //NORMALIZAÇÃO DOS DADOS
-        nameReg = normalizaTextoRetiraEspacos(nameReg.value);
-        surnameReg = normalizaTextoRetiraEspacos(surnameReg.value);
-        emailReg = normalizaTextoRetiraEspacos(emailReg.value);
-        passwordReg = normalizaTextoRetiraEspacos(passwordReg.value);
-        confirmPasswordReg = normalizaTextoRetiraEspacos(confirmPasswordReg.value);
+        nameReg = normalizarTexto(nameReg.value);
+        surnameReg = normalizarTexto(surnameReg.value);
+        emailReg = normalizarTexto(emailReg.value);
+        passwordReg = normalizarTexto(passwordReg.value);
+        confirmPasswordReg = normalizarTexto(confirmPasswordReg.value);
 
         objetoUsuarioRegistro.nome = nameReg;
         objetoUsuarioRegistro.sobrenome = surnameReg;
@@ -108,6 +108,51 @@ confirmPasswordReg.addEventListener('keyup', () => {
 
     validarRegistro(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
 })
+
+
+function registryRequest(){
+
+    let configRegistryRequest = {
+        method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(objetoUsuarioRegistro)
+    }
+
+    fetch('https://ctd-todo-api.herokuapp.com/v1/users', configRegistryRequest)
+    .then(
+        response => {
+            if (response.status == 201 || response.status == 200) {
+                console.log('deu certo');
+                return response.json();
+        } 
+        // else{
+        //     //lança uma exceção em caso de erro
+        //     console.log('exceção');
+        //     throw response;
+        // }
+    })
+    .then(
+        response => {
+            success(response.status);
+            console.log(response.status);
+        }
+    )
+    .catch(
+        erro => {
+            if (erro.status == 400 || erro.status == 404) {
+                console.log('erro');
+                error('Usuário já registrado/Dados incompletos');
+            } 
+            // else {
+            //     console.log('ESSE ELSE É NECESSÁRIO?');
+            // }
+        }
+    );
+}
+
+registryRequest();
 
 
 //FUNÇÃO PARA VALIDAÇÃO DO FORMULÁRIO APÓS O PREENCHIMENTO DE TODOS OS CAMPOS DE ACORDO COM REQUISITOS

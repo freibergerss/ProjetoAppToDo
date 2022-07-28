@@ -37,7 +37,7 @@ function validarSenhas(senha, confirmaSenha) {
 };
 
 
-//FUNÇÃO PARA VALIDAÇÃO DE EMAIL DE ACORDO COM REGEX (EM USO)
+//FUNÇÃO PARA VALIDAÇÃO DE EMAIL DE ACORDO COM REGEX
 function validarEmail(email){
     if(!email) {
         return 'Campo obrigatório!';
@@ -49,7 +49,20 @@ function validarEmail(email){
 };
 
 
-//FUNÇÃO PARA NORMALIZAÇÃO DE TEXTO (EM USO)
+//FUNÇÃO PARA NORMALIZAÇÃO DE TEXTO
 function normalizarTexto (textoRecebido) {
     return textoRecebido.trim();
 };
+
+
+//FUNÇÃO PARA RETORNAR RESPOSTA DE SUCESSO DAS PROMISES
+function success(successMessage) {
+    console.log(successMessage);
+}
+
+
+//FUNÇÃO PARA RETORNAR RESPOSTA DE ERRO DAS PROMISES
+function error(errorMessage) {
+    console.log(errorMessage);
+    alert(errorMessage);
+}
