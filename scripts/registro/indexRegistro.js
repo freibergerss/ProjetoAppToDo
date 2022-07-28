@@ -17,96 +17,96 @@ buttonReg.style.backgroundColor = '#979292a1';
 buttonReg.innerText = 'Bloqueado';
 
 
-let objetoUsuarioRegistro = {
-    nome: '',
-    sobrenome: '',
+let registryUser = {
+    name: '',
+    surname: '',
     email: '',
-    senha: ''
+    pass: ''
 };
 
 //VALIDAÇÕES
 buttonReg.addEventListener('click', function (e) {
 
-  if(validarRegistro(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value)) {
+  if(validateRegistry(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value)) {
         // e.preventDefault();
         //ESSE PREVENT_DEFAULT ME IMPEDE DE DAR REFRESH NA PÁGINA !!!!!!!!!!!!!!!!!
 
 //NORMALIZAÇÃO DOS DADOS
-        nameReg = normalizarTexto(nameReg.value);
-        surnameReg = normalizarTexto(surnameReg.value);
-        emailReg = normalizarTexto(emailReg.value);
-        passwordReg = normalizarTexto(passwordReg.value);
-        confirmPasswordReg = normalizarTexto(confirmPasswordReg.value);
+        nameReg = textNormalization(nameReg.value);
+        surnameReg = textNormalization(surnameReg.value);
+        emailReg = textNormalization(emailReg.value);
+        passwordReg = textNormalization(passwordReg.value);
+        confirmPasswordReg = textNormalization(confirmPasswordReg.value);
 
-        objetoUsuarioRegistro.nome = nameReg;
-        objetoUsuarioRegistro.sobrenome = surnameReg;
-        objetoUsuarioRegistro.email = emailReg;
-        objetoUsuarioRegistro.senha = passwordReg;
+        registryUser.name = nameReg;
+        registryUser.surname = surnameReg;
+        registryUser.email = emailReg;
+        registryUser.pass = passwordReg;
 
-        let objetoEmJsonRegistro = JSON.stringify(objetoUsuarioRegistro);
+        let registryUserJson = JSON.stringify(registryUser);
 
-        console.log(objetoEmJsonRegistro);
+        console.log(registryUserJson);
     }
 });    
 
 
-//EVENTO PARA VALIDAÇÃO DO INPUT NAME ATRAVÉS DA FUNÇÃO campoObrigatorio
+//EVENTO PARA VALIDAÇÃO DO INPUT NAME ATRAVÉS DA FUNÇÃO required
 nameReg.addEventListener('keyup', () => {
 
-    let errorMessageNameReg = campoObrigatorio(nameReg.value);
+    let errorMessageNameReg = required(nameReg.value);
     errorNameReg.innerText = errorMessageNameReg;
 
     nameReg.style.border = errorMessageNameReg == '' ? '2px solid transparent' : '2px solid #e9554ebb';
 
-    validarRegistro(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
+    validateRegistry(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
 })
 
 
-//EVENTO PARA VALIDAÇÃO DO INPUT SURNAME ATRAVÉS DA FUNÇÃO campoObrigatorio
+//EVENTO PARA VALIDAÇÃO DO INPUT SURNAME ATRAVÉS DA FUNÇÃO required
 surnameReg.addEventListener('keyup', () => {
 
-    let errorMessageSurnameReg = campoObrigatorio(surnameReg.value);
+    let errorMessageSurnameReg = required(surnameReg.value);
     errorSurnameReg.innerText = errorMessageSurnameReg;
 
     surnameReg.style.border = errorMessageSurnameReg == '' ? '2px solid transparent' : '2px solid #e9554ebb';
 
-    validarRegistro(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
+    validateRegistry(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
 })
 
 
-//EVENTO PARA VALIDAÇÃO DO EMAIL ATRAVÉS DA FUNÇÃO validarEmail
+//EVENTO PARA VALIDAÇÃO DO EMAIL ATRAVÉS DA FUNÇÃO validateEmail
 emailReg.addEventListener('keyup', () => {
 
-    let errorMessageEmailReg = validarEmail(emailReg.value);
+    let errorMessageEmailReg = validateEmail(emailReg.value);
     errorEmailReg.innerText = errorMessageEmailReg;
 
     emailReg.style.border = errorMessageEmailReg == '' ? '2px solid transparent' : '2px solid #E9554EBB';
 
-    validarRegistro(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
+    validateRegistry(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
 });
 
 
-//EVENTO PARA VALIDAÇÃO DA DEFINIÇÃO DE SENHA ATRAVÉS DA FUNÇÃO definirSenha
+//EVENTO PARA VALIDAÇÃO DA DEFINIÇÃO DE SENHA ATRAVÉS DA FUNÇÃO setPassword
 passwordReg.addEventListener('keyup', () =>{
 
-    let errorMessagePasswordReg = definirSenha(passwordReg.value);
+    let errorMessagePasswordReg = setPassword(passwordReg.value);
     errorPasswordReg.innerText = errorMessagePasswordReg;
 
     passwordReg.style.border = errorMessagePasswordReg == '' ? '2px solid transparent' : '2px solid #E9554EBB';
     
-    validarRegistro(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
+    validateRegistry(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
 })
 
 
-//EVENTO PARA VALIDAÇÃO DAS SENHAS ATRAVÉS DA FUNÇÃO validarSenhas
+//EVENTO PARA VALIDAÇÃO DAS SENHAS ATRAVÉS DA FUNÇÃO passwordValidation
 confirmPasswordReg.addEventListener('keyup', () => {
 
-    let errorMessageConfirmPasswordReg = validarSenhas(passwordReg.value, confirmPasswordReg.value);
+    let errorMessageConfirmPasswordReg = passwordValidation(passwordReg.value, confirmPasswordReg.value);
     errorConfirmPasswordReg.innerText = errorMessageConfirmPasswordReg;
 
     confirmPasswordReg.style.border = errorMessageConfirmPasswordReg == '' ? '2px solid transparent' : '2px solid #E9554EBB';
 
-    validarRegistro(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
+    validateRegistry(nameReg.value, surnameReg.value, emailReg.value, passwordReg.value, confirmPasswordReg.value);
 })
 
 
@@ -117,7 +117,7 @@ function registryRequest(){
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify(objetoUsuarioRegistro)
+    body: JSON.stringify(registryUser)
     }
 
     fetch('https://ctd-todo-api.herokuapp.com/v1/users', configRegistryRequest)
@@ -156,9 +156,9 @@ registryRequest();
 
 
 //FUNÇÃO PARA VALIDAÇÃO DO FORMULÁRIO APÓS O PREENCHIMENTO DE TODOS OS CAMPOS DE ACORDO COM REQUISITOS
-function validarRegistro (nome, sobrenome, email, password, confirmPassword) {
+function validateRegistry (name, surname, email, password, confirmPassword) {
 
-    if (campoObrigatorio(nome) == '' && campoObrigatorio(sobrenome) == '' && validarEmail(email) == '' && definirSenha(password) == '' && validarSenhas(password, confirmPassword) == '') {
+    if (required(name) == '' && required(surname) == '' && validateEmail(email) == '' && setPassword(password) == '' && passwordValidation(password, confirmPassword) == '') {
 
         buttonReg.removeAttribute('disabled');
         buttonReg.style.backgroundColor = '#7898ff';

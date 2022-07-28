@@ -1,24 +1,24 @@
 //FUNÇÃO PARA VALIDAÇÃO DE CAMPO OBRIGATÓRIO
-function campoObrigatorio(param){
+function required(param){
     return (!param) ? 'Campo obrigatório' : '';
 };
 
 
 //FUNÇÃO PARA VALIDAÇÃO DE SENHA DE ACORDO COM REGEX 
-function definirSenha(senhaRecebida) {
-    if (!senhaRecebida){
+function setPassword(receivedPassword) {
+    if (!receivedPassword){
         return 'Defina uma senha.';
     }
-    if(!senhaRecebida.match(/^[0-9a-zA-Z$*&@#]{8,}$/)) {
+    if(!receivedPassword.match(/^[0-9a-zA-Z$*&@#]{8,}$/)) {
         return 'A senha deve possuir ao menos 8 caracteres.';
     }
-    if (!senhaRecebida.match(/[A-Z]+/)){
+    if (!receivedPassword.match(/[A-Z]+/)){
         return 'A senha deve possuir ao menos uma letra maiúscula.';
     }
-    if (!senhaRecebida.match(/\d+/)){
+    if (!receivedPassword.match(/\d+/)){
         return 'A senha deve possuir ao menos um dígito numérico.';
     }
-    if (!senhaRecebida.match(/[a-z]+/)){
+    if (!receivedPassword.match(/[a-z]+/)){
         return 'A senha deve possuir ao menos uma letra minúscula.';
     }
     return '';
@@ -26,11 +26,11 @@ function definirSenha(senhaRecebida) {
 
 
 //FUNÇÃO PARA VALIDAR SE AS SENHAS SÃO COMPATÍVEIS
-function validarSenhas(senha, confirmaSenha) {
-    if(!confirmaSenha){
+function passwordValidation(pass, confirmPass) {
+    if(!confirmPass){
         return 'Campo Obrigatório!';
     }
-    if(senha !== confirmaSenha){
+    if(pass !== confirmPass){
        return "Senhas diferentes!";
     } 
     return '';
@@ -38,7 +38,7 @@ function validarSenhas(senha, confirmaSenha) {
 
 
 //FUNÇÃO PARA VALIDAÇÃO DE EMAIL DE ACORDO COM REGEX
-function validarEmail(email){
+function validateEmail(email){
     if(!email) {
         return 'Campo obrigatório!';
     }
@@ -50,8 +50,8 @@ function validarEmail(email){
 
 
 //FUNÇÃO PARA NORMALIZAÇÃO DE TEXTO
-function normalizarTexto (textoRecebido) {
-    return textoRecebido.trim();
+function textNormalization (receivedText) {
+    return receivedText.trim();
 };
 
 
