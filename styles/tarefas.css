@@ -16,18 +16,18 @@ a {
   color: white
 }
 
-.user-info {
+.userInfo {
   display: flex;
   align-items: center;
   margin-left: auto;
   color: rgb(223, 223, 223);
 }
 
-.user-info p {
+.userInfo p {
   text-transform: capitalize;
 }
 
-.user-info .user-image {
+.userInfo .userImage {
   height: 2em;
   width: 2em;
   border-radius: 50%;
@@ -36,7 +36,7 @@ a {
   margin-left: .7em;
 }
 
-#closeApp{
+#logoutBtn{
   margin-left: 15px;
   font-size: .7em;
   background-color: rgb(218, 88, 88);
@@ -48,7 +48,7 @@ a {
 
 /* Nova tarefa ----------------------------------------------------------- */
 
-.nova-tarefa {
+.taskForm {
   position: relative;
   display: flex;
   align-items: center;
@@ -61,7 +61,7 @@ a {
   z-index: 20;
 }
 
-.nova-tarefa input[type=text] {
+.taskForm input[type=text] {
   border: none;
   flex: 1;
   border-bottom: 1px solid lightgrey;
@@ -70,17 +70,17 @@ a {
   font-size: 1.1em;
 }
 
-.nova-tarefa input:focus {
+.taskForm input:focus {
   outline: none;
   border-bottom: 1px solid grey;
 }
 
-.nova-tarefa input::placeholder {
+.taskForm input::placeholder {
   color: rgb(197, 197, 197);
   text-indent: .2em;
 }
 
-.nova-tarefa button {
+.taskForm button {
   height: 2em;
   width: 2em;
   background-color: transparent;
@@ -90,16 +90,16 @@ a {
   cursor: pointer;
 }
 
-.nova-tarefa button:hover {
+.taskForm button:hover {
   opacity: 1;
 }
 
-.nova-tarefa button img {
+.taskForm button img {
   height: 100%;
   width: 100%;
 }
 
-.not-done {
+.checkbox {
   width: 2em;
   height: 2em;
   background-color: var(--app-grey);
@@ -112,7 +112,7 @@ a {
 
 /* Lista de tarefas ----------------------------------------------------------- */
 
-.tarefas-pendentes {
+.pendingTasks {
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -120,13 +120,13 @@ a {
   margin: 2em 15%;
 }
 
-.tarefa {
+.pendingTaskList {
   display: flex;
   align-items: center;
   margin-bottom: 1.5em;
 }
 
-.tarefa .not-done {
+.pendingTaskList .checkbox {
   position: relative;
   height: 1.5em;
   width: 1.5em;
@@ -137,11 +137,11 @@ a {
   transition: background-color 200ms linear;
 }
 
-.tarefa .not-done:hover {
+.pendingTaskList .checkbox:hover {
   background-color: var(--secondary);
 }
 
-.tarefa:first-child .not-done::before {
+.pendingTaskList:first-child .checkbox::before {
   content: '';
   position: absolute;
   bottom: 100%;
@@ -152,7 +152,7 @@ a {
   background-color: var(--secondary);
 }
 
-.tarefa:not(:last-child) .not-done::after {
+.pendingTaskList:not(:last-child) .checkbox::after {
   content: '';
   position: absolute;
   top: 100%;
@@ -163,7 +163,7 @@ a {
   background-color: var(--secondary);
 }
 
-.tarefa .descricao {
+.pendingTaskList .taskDescription {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -173,18 +173,18 @@ a {
   box-shadow: 2px 2px 5px lightgrey;
 }
 
-.tarefa .nome {
+.pendingTaskList .name {
   color: rgb(95, 95, 95);
 }
 
-.tarefa .timestamp {
+.pendingTaskList .timestamp {
   font-size: .9em;
   color: rgb(134, 134, 134);
 }
 
 /* Tarefas terminadas ----------------------------------------------------------- */
 
-.titulo-terminadas {
+.finishedTasks {
   position: relative;
   width: 8em;
   text-align: center;
@@ -199,7 +199,7 @@ a {
   z-index: 20;
 }
 
-.tarefas-terminadas {
+.finishedTaskList {
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -207,31 +207,31 @@ a {
   margin: 2em 15%;
 }
 
-.tarefas-terminadas i{
+.finishedTaskList i{
   color: grey;
   background-color: rgb(228, 228, 228);
 }
-.tarefas-terminadas button{
+.finishedTaskList button{
   margin-left: 10px;
 }
 
-.tarefas-terminadas .tarefa .descricao {
+.finishedTaskList .pendingTaskList .taskDescription {
   background-color: rgb(228, 228, 228);
 }
 
-.tarefas-terminadas .tarefa .descricao .nome {
+.finishedTaskList .pendingTaskList .taskDescription .name {
   color: grey;
   text-decoration: line-through;
 }
 
-#skeleton .descricao{
+#skeleton .taskDescription{
   background-color: rgb(189, 189, 189);
 }
 #skeleton p{
   background-color: rgb(214, 214, 214);
   color: rgb(214, 214, 214);
 }
-#skeleton .not-done{
+#skeleton .checkbox{
   background-color: rgb(189, 189, 189);
 }
 
